@@ -11,11 +11,7 @@ class Object:
         self.vely = 0
         self.symbol = symbol
     
-    def update(self):
-        pass
-
-class Ball(Object):
-    def update(self):
+    def update(self, game):
         pass
 
 class Game:
@@ -30,16 +26,16 @@ class Game:
 
     def update(self):
         for obj in self.objects:
-            obj.update()
+            obj.update(self)
 
     def draw(self):
         screen = '_'*(self.x+2)+'\n'
-        for y in range(self.y):
+        for y in range(self.y+1):
             screen += '|'
-            for x in range(self.x):
+            for x in range(self.x+1):
                 paint = ' '
                 for obj in self.objects:
-                    if (obj.x == x) and (obj.y == y):
+                    if (int(obj.x) == x) and (int(obj.y) == y):
                         paint = obj.symbol
                 screen += paint
             screen += '|'
