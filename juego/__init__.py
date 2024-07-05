@@ -14,6 +14,9 @@ class Object:
     def update(self, game):
         pass
 
+    def __repr__(self):
+        return str(self.__dict__)
+
 class Game:
     def __init__(self, x, y):
         self.x = x

@@ -8,10 +8,15 @@ class Ball(Object):
         super().__init__(x, y, '@')
 
     def update(self, game):
-        self.vely += GRAVITY/FPS
+        '''https://www.fisicalab.com/apartado/mrua'''
+        # a la pelota se le suma la aceleracion de la gravedad. cada vez que rebota con alguna pared,
+        # pierde un poco de velocidad para que poco a poco se frene.
+
+        self.vely += GRAVITY/FPS # gravedad
         self.x += self.velx/FPS
         self.y += self.vely/FPS
 
+        # rebotes con las paredes
         if self.y >= game.y:
             self.y = game.y
             self.vely *= -0.9
